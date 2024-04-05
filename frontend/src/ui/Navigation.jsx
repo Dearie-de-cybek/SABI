@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-scroll";
-import { Link as NavLink } from "react-router-dom";
+// import { Link as NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { HiBars3, HiXMark } from "react-icons/hi2";
 import Button from "../components/button";
-import Logo from "../components/Logo";
+
 
 const NavContainer = styled.nav`
   width: 100%;
@@ -13,14 +13,14 @@ const NavContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--color-purple-600);
+  background-color: var(--color-off-white);
   gap: 10rem;
   position: fixed;
   z-index: 100;
 
   & svg {
     font-size: 4rem;
-    fill: var(--color-purple-200);
+    fill: var(--color-contrast-100);
     display: none;
   }
 
@@ -50,7 +50,7 @@ const MenuContainer = styled.div`
     gap: 2rem;
     padding: 2rem;
     box-shadow: var(--shadow-sm);
-    background-color: var(--color-purple-600);
+    background-color: var(--color-main-400);
     opacity: ${(props) => (props.menu === "true" ? "1" : "0")};
     transform: translateX(
       ${(props) => (props.menu === "true" ? "0" : "-100%")}
@@ -99,12 +99,12 @@ const StyledLink = styled(Link)`
   &:hover,
   &:hover::before,
   &:active::before {
-    color: var(--color-purple-200);
+    color: var(--color-main);
   }
 
   &:hover::before,
   &:active::before {
-    background-color: var(--color-purple-200);
+    background-color: var(--color-main-200);
   }
 `;
 
@@ -127,7 +127,7 @@ function Navigation() {
 
   return (
     <NavContainer>
-      <Logo />
+      
       {!isMenuOpen ? (
         <HiBars3 onClick={handleOpen} />
       ) : (
@@ -149,34 +149,29 @@ function Navigation() {
           <li>
             <StyledLink
               offset={-50}
-              to="programs"
+              to="shop"
               smooth={true}
               duration={500}
               onClick={handleClose}
             >
-              Programs
+              Shop
             </StyledLink>
           </li>
           <li>
             <StyledLink
-              to="research"
+              to="trends"
               smooth={true}
               duration={500}
               onClick={handleClose}
             >
-              Research
+              Trends
             </StyledLink>
           </li>
         </NavList>
         <Buttons>
-          <Button variation="light" size="medium">
-            Apply
-          </Button>
-          <NavLink to="/login">
             <Button variation="primary" size="medium">
-              Log in
+              Contact SABI
             </Button>
-          </NavLink>
         </Buttons>
       </MenuContainer>
     </NavContainer>
