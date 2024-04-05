@@ -7,6 +7,11 @@ const GlobalStyles = createGlobalStyle`
 :root {
   --color-box-shadow: rgb(69, 69, 69);
   --color-main: #11212f;
+  --color-main-200: #414d59;
+  --color-main-300: #58646d;
+  --color-main-400: #0a141c;
+  --color-main-500: #091118;
+  --color-main-700: #050a0e;
   --color-secondary: #b3d749;
   --color-hover-state: #d91c71;
   --color-off-white: #ffffff;
