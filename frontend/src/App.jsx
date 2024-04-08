@@ -6,14 +6,15 @@ import ProductPage from "./pages/ProductPage";
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <GlobalStyles>
+        <BrowserRouter>
         <Routes>
           {/* Homepage */}
           <Route index path="/" element={<HomePage />} />
           <Route index path="/product" element={<ProductPage />} />
         </Routes>
-      </BrowserRouter>
-      <GlobalStyles /> {/* Apply GlobalStyles outside of the JSX element tree */}
+        </BrowserRouter>
+      </GlobalStyles>
     </>
   )
 }
