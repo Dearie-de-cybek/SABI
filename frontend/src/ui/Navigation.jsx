@@ -1,181 +1,115 @@
-import { useState } from "react";
-import { Link } from "react-scroll";
+// import { useState } from "react";
+// import { Link } from "react-scroll";
 // import { Link as NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { HiBars3, HiXMark } from "react-icons/hi2";
-import Button from "../components/button";
+// import { HiBars3, HiXMark } from "react-icons/hi2";
+import { CiSearch } from "react-icons/ci";
+import { FaCircleUser } from "react-icons/fa6";
+import { HiShoppingBag } from "react-icons/hi2";
+import Logo from "../components/Logo";
+
+// import Button from "../components/button";
 
 
-const NavContainer = styled.nav`
-  width: 100%;
-  height: 8rem;
-  padding: 3rem 5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--color-off-white);
-  gap: 10rem;
-  position: fixed;
-  z-index: 100;
-
-  & svg {
-    font-size: 4rem;
-    fill: var(--color-contrast-100);
-    display: none;
-  }
-
-  @media (max-width: 768px) {
-    & svg {
-      display: inline-block;
-    }
-  }
-`;
-
-const MenuContainer = styled.div`
+const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10rem;
-  transition: opacity 0.5s ease, transform 0.5s ease, gap 0.5s ease,
-    padding 0.5s ease;
+  height: 9.6rem;
+  padding: 0 4.8rem;
+  position: relative;
+  border-bottom: 1px solid #eee;
 
-  @media (max-width: 768px) {
-    position: absolute;
-    top: 8rem;
-    left: 0;
-    width: 100vw;
-    height: auto;
-    overflow: hidden;
-    flex-direction: column;
-    gap: 2rem;
-    padding: 2rem;
-    box-shadow: var(--shadow-sm);
-    background-color: var(--color-main-400);
-    opacity: ${(props) => (props.menu === "true" ? "1" : "0")};
-    transform: translateX(
-      ${(props) => (props.menu === "true" ? "0" : "-100%")}
-    );
+  &.sticky {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: rgba(255, 255, 255, 0.97);
+    z-index: 999;
+    box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
   }
 `;
 
-const NavList = styled.ul`
+
+
+const MainNavList = styled.ul`
+  list-style: none;
   display: flex;
   align-items: center;
-  gap: 1rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
+  gap: 2.8rem;
 `;
 
-const StyledLink = styled(Link)`
-  cursor: pointer;
-  transform: translateX(50%);
+const MainNavLink = styled.a`
   display: inline-block;
-  padding: 0.5rem;
   text-decoration: none;
-  color: var(--color-white);
-  transition: all 0.15s linear;
+  color: #333;
+  font-weight: 500;
+  font-size: 1.5rem;
+  transition: all 0.3s;
 
-  @media (max-width: 768px) {
-    transform: translateX(0);
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: -5%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-    height: 1px;
-    background-color: transparent;
-
-    @media (max-width: 768px) {
-      width: 100%;
-    }
-  }
-
-  &:hover,
-  &:hover::before,
-  &:active::before {
-    color: var(--color-main);
-  }
-
-  &:hover::before,
-  &:active::before {
-    background-color: var(--color-main-200);
+  &:link,
+  &:visited {
+    color: #333;
   }
 `;
 
-const Buttons = styled.div`
+const SideNav = styled.div`
+  font-size: 1.5rem;
   display: flex;
-  align-items: center;
-  gap: 2rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
+  gap: 2.8rem;
 `;
 
-function Navigation() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const BtnMobileNav = styled.button`
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: none;
+`;
 
-  const handleOpen = () => setIsMenuOpen(true);
-  const handleClose = () => setIsMenuOpen(false);
+const IconMobileNav = styled.div`
+  height: 4.8rem;
+  width: 4.8rem;
+  color: #333;
+`;
 
+// Header component
+const Navigation = () => {
   return (
-    <NavContainer>
-      
-      {!isMenuOpen ? (
-        <HiBars3 onClick={handleOpen} />
-      ) : (
-        <HiXMark onClick={handleClose} />
-      )}
+    <Header className="header">
+      <a href="#">
+      <Logo />
+      </a>
 
-      <MenuContainer menu={`${isMenuOpen}`}>
-        <NavList>
+      <nav className="main-nav">
+        <MainNavList className="main-nav-list">
           <li>
-            <StyledLink
-              to="home"
-              smooth={true}
-              duration={500}
-              onClick={handleClose}
-            >
-              Home
-            </StyledLink>
+            <MainNavLink href="#home">Home</MainNavLink>
           </li>
           <li>
-            <StyledLink
-              offset={-50}
-              to="shop"
-              smooth={true}
-              duration={500}
-              onClick={handleClose}
-            >
-              Shop
-            </StyledLink>
+            <MainNavLink href="#trends">Trends</MainNavLink>
           </li>
           <li>
-            <StyledLink
-              to="trends"
-              smooth={true}
-              duration={500}
-              onClick={handleClose}
-            >
-              Trends
-            </StyledLink>
+            <MainNavLink href="#offers">Offers</MainNavLink>
           </li>
-        </NavList>
-        <Buttons>
-            <Button variation="primary" size="medium">
-              Contact SABI
-            </Button>
-        </Buttons>
-      </MenuContainer>
-    </NavContainer>
+        </MainNavList>
+      </nav>
+
+      <SideNav className="side-nav">
+        <CiSearch />
+        <FaCircleUser />
+        <HiShoppingBag />
+      </SideNav>
+
+      <BtnMobileNav className="btn-mobile-nav">
+        <IconMobileNav className="icon-mobile-nav">Menu Icon</IconMobileNav>
+        <IconMobileNav className="icon-mobile-nav">Close Icon</IconMobileNav>
+      </BtnMobileNav>
+    </Header>
   );
-}
+};
 
 export default Navigation;
