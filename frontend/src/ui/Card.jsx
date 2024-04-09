@@ -7,7 +7,7 @@ import shortGrey from '../assets/imgs/shorts-grey.jpg';
 function Card() {
   return (
     <div className="card">
-      <div class="grid grid-cols-2 gap-11 container mx-auto px-4 sm:px-6 lg:px-8 mt-5">
+      <div class="grid md:grid-cols-2 grid-cols-1 gap-11 container mx-auto px-4 sm:px-6 lg:px-8 mt-5">
       <div class="">
         <img class="w-full" src={shortPink} alt="short" />
         <div class="grid grid-cols-2 gap-4 m-3">
